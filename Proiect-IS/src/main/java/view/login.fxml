@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInController">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <ImageView fitHeight="400.0" fitWidth="600.0">
+                    <image>
+                        <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect-IS/Proiect-IS/src/main/java/View/veri-ivanova-whOkVvf0_hU-unsplash.jpg" />
+                    </image>
+                </ImageView>
+                <Pane prefHeight="400.0" prefWidth="600.0">
+                    <children>
+                        <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="111.0" prefHeight="17.0" prefWidth="185.0" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;" />
+                        <ImageView fitHeight="23.0" fitWidth="34.0" layoutX="22.0" layoutY="363.0">
+                            <image>
+                                <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect-IS/Proiect-IS/src/main/java/View/300px-Flag_of_France.svg.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="23.0" fitWidth="34.0" layoutX="112.0" layoutY="363.0">
+                            <image>
+                                <Image url="@Romania.jpg" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="23.0" fitWidth="34.0" layoutX="68.0" layoutY="363.0">
+                            <image>
+                                <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect-IS/Proiect-IS/src/main/java/View/Drapelul-Turciei.jpg" />
+                            </image>
+                        </ImageView>
+                    </children></Pane>
+                <PasswordField fx:id="password" layoutX="67.0" layoutY="200.0" onAction="#passwordOnAction" />
+                <TextField fx:id="username" layoutX="67.0" layoutY="157.0" onAction="#userNameOnAction" />
+                <Button fx:id="login" layoutX="118.0" layoutY="253.0" mnemonicParsing="false" onAction="#loginOnAction" style="-fx-background-color: #759B84; -fx-text-fill: #FFFFFF;" text="LogIn" />
+                <TextField alignment="CENTER" layoutX="14.0" layoutY="156.0" prefHeight="27.0" prefWidth="57.0" style="-fx-background-color: -fx-control-inner-backgrountransparent; -fx-text-fill:  #FFFFFF" text="Username">
+                    <font>
+                        <Font name="Dubai Regular" size="10.0" />
+                    </font>
+                </TextField>
+                <TextField layoutX="13.0" layoutY="201.0" prefHeight="23.0" prefWidth="58.0" style="-fx-background-color: transparent;-fx-text-fill:  #FFFFFF" text="Password">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </TextField>
+                <TextField alignment="CENTER" layoutX="72.0" layoutY="20.0" style="-fx-background-color: trasnparent;-fx-text-fill:  #FFFFFF" text="The Flower Bucket">
+                    <font>
+                        <Font name="Century Gothic" size="37.0" />
+                    </font>
+                </TextField>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
