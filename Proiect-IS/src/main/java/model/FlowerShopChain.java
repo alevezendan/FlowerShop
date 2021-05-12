@@ -4,15 +4,16 @@ import entity.FlowerShop;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FlowerShopChain {
-    public ArrayList<FlowerShop> getFlowerShops() {
+    public List<FlowerShop> getFlowerShops() {
         return flowerShops;
     }
 
-    public void setFlowerShops(ArrayList<FlowerShop> flowerShops) {
+    public void setFlowerShops(List<FlowerShop> flowerShops) {
         this.flowerShops = flowerShops;
     }
 
-    private ArrayList<FlowerShop> flowerShops;
+    private List<FlowerShop> flowerShops;
 }

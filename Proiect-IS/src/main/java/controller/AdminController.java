@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminController extends Controller implements  Initializable {
@@ -69,7 +70,11 @@ public class AdminController extends Controller implements  Initializable {
         dataF= FXCollections.observableArrayList();
         dataU= FXCollections.observableArrayList();
         usersTable.getSelectionModel (). setCellSelectionEnabled (true);
-        //initCombo();
+        flowerService.initCombo(combo);
+        List<FlowerShop> flowerShops=flowerShopService.getFlowerShops();
+        flowerShopService.getFlowerShopChain().setFlowerShops(flowerShops);
+        List<User> users=userService.getAllUsers();
+        userService.getUsers().setUsers(users);
 
     }
 
@@ -85,16 +90,21 @@ public class AdminController extends Controller implements  Initializable {
     void flowerStudioOnAction(ActionEvent event) {
         flowersTable.getItems().clear();
         flowersTable.getColumns().clear();
+        flowersTable.setVisible(true);
+
         FlowerShop f=flowerShopService.getFlowerShopByName("The Flower Studio");
         usersTable.setVisible(false);
         flowerService.showFlowers(flowersTable,f,dataF);
         //userP.showFlowers(flowersTable,f,dataF);
+
     }
 
     @FXML
     void blossomHouseOnAction(ActionEvent event) {
         flowersTable.getItems().clear();
         flowersTable.getColumns().clear();
+        flowersTable.setVisible(true);
+
         FlowerShop f=flowerShopService.getFlowerShopByName("Blossom House");
         usersTable.setVisible(false);
         flowerService.showFlowers(flowersTable,f,dataF);
@@ -104,6 +114,8 @@ public class AdminController extends Controller implements  Initializable {
     void roseCoOnAction(ActionEvent event) {
         flowersTable.getItems().clear();
         flowersTable.getColumns().clear();
+        flowersTable.setVisible(true);
+
         FlowerShop f=flowerShopService.getFlowerShopByName("Rose and Co");
         usersTable.setVisible(false);
         flowerService.showFlowers(flowersTable,f,dataF);
@@ -123,6 +135,7 @@ public class AdminController extends Controller implements  Initializable {
 
             String v = combo.getValue();
             FlowerShop f = flowerShopService.getFlowerShopByName(v);
+            userService.showUsers(usersTable, v, dataU, f, name, role, username, id);
             // userP.showUsers(usersTable, v, dataU, f, name, role, username, id);
         }catch(Exception e){
             showErrorDialog("Flower Shop not selected!");

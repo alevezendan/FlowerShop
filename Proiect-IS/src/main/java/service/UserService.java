@@ -10,12 +10,22 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Users;
+import repository.UserRepo;
+
+import java.util.List;
 //import lombok.Data;
 
 
 public class UserService{
 
    private Users users;
+   private UserRepo userRepo;
+   private FlowerShopService flowerShopService;
+   public UserService(){
+       this.userRepo=new UserRepo();
+       this.users=new Users();
+       flowerShopService=new FlowerShopService();
+   }
 
     public Users getUsers() {
         return users;
@@ -65,11 +75,21 @@ public class UserService{
                 new PropertyValueFactory<>("id"));
     }
 
+
+    public void showUsers(ComboBox<String> combo){
+       if(combo.getValue().equals("All Users")){
+
+       }
+    }
     public void showAllUsers(ObservableList<User> dataU){
         dataU.removeAll();
         for(User u:users.getUsers()){
             dataU.add(u);
         }
+    }
+
+    public List<User> getAllUsers(){
+        return userRepo.showAllUsers();
     }
 
     public void showSpecificUser(FlowerShop f, ObservableList<User> dataU){
@@ -90,7 +110,7 @@ public class UserService{
         }
         else{
 
-            //f=flowsP.getFlowerShop(combo.getValue());
+            f=flowerShopService.getFlowerShopByName(value);
             //specificUsers(f);
             showSpecificUser(f,dataU);
 

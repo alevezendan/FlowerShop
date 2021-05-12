@@ -2,8 +2,10 @@ package service;
 
 import entity.Flower;
 import entity.FlowerShop;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,15 +36,15 @@ public class FlowerService {
         //flowersTable.setItems((ObservableList<Flower>) fShop.getFlowers());
         TableColumn  availab= new TableColumn("Availability");
         availab.setMinWidth(100);
-        availab.setCellValueFactory(new PropertyValueFactory<>("disp"));
+        availab.setCellValueFactory(new PropertyValueFactory<>("availability"));
 
         TableColumn quant= new TableColumn("Quantity");
         quant.setMinWidth(80);
-        quant.setCellValueFactory(new PropertyValueFactory<>("quant"));
+        quant.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
         TableColumn idF= new TableColumn("Shop id");
         idF.setMinWidth(80);
-        idF.setCellValueFactory(new PropertyValueFactory<>("ids"));
+        idF.setCellValueFactory(new PropertyValueFactory<>("flowerShop"));
         flowersTable.getColumns().addAll(type, price, color,availab,quant,idF);
 
     }
@@ -57,6 +59,16 @@ public class FlowerService {
         }
         populateFlowerTable(flowersTable);
         flowersTable.setItems(dataF);
-        dataF.removeAll();
+        //dataF.removeAll();
+    }
+
+    public void initCombo(ComboBox<String> combo){
+        ObservableList<String> list= FXCollections.observableArrayList();
+        list.add("The Flower Studio");
+        list.add("Blossom House");
+        list.add("Rose and Co");
+        list.add("All shops");
+        combo.setItems(list);
+
     }
 }

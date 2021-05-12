@@ -4,16 +4,17 @@ import entity.User;
 //import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //@Data
 public class Users {
-    private ArrayList<User> users;
+    private List<User> users;
 
-    public ArrayList<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(ArrayList<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }

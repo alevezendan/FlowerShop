@@ -26,7 +26,7 @@ public class ApplicationStart extends  Application {
         FlowerShopRepo fsr=new FlowerShopRepo();
         FlowerRepo fr=new FlowerRepo();
         FlowerShop fS=new FlowerShop();
-        fS.setName("florarie");
+        fS.setName("The Flower Studio");
         fS.setId(2);
         fsr.insertNewFlowerShop(fS);
         Flower f1=new Flower();

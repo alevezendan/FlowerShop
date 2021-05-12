@@ -41,8 +41,7 @@ public class UserRepo {
 	public List<User> showAllUsers() {
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		List<User> users = em.createQuery("SELECT u FROM User u", User.class)
-				.getResultList();
+		List<User> users = em.createQuery("from User", User.class).getResultList();
 		em.close();
 		return users;
 	}

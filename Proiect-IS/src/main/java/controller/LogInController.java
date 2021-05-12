@@ -60,7 +60,7 @@ public class LogInController<VLogin> implements Initializable {
                 break;
             case "Employee" :System.out.println("Employee");
                 errorLabel.setText("User:"+usern);
-                initNewPresenter(emplContr,"src\\main\\java\\View\\employee.fxml","Employee:"+usern);
+                initNewPresenter(emplContr,"src\\main\\java\\view\\employee.fxml","Employee:"+usern);
                 break;
             default:showErrorDialog("Error!");
 
@@ -142,7 +142,8 @@ public class LogInController<VLogin> implements Initializable {
 
         } catch(IOException e){
             System.out.println("eferg");
-            System.out.println(e.getMessage());
+
+            e.printStackTrace();
         }
     }
 
