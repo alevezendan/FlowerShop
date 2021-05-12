@@ -62,6 +62,9 @@ public class AdminController extends Controller implements  Initializable {
         role = new TableColumn("Role");
         username = new TableColumn("Username");
         id = new TableColumn("Flower shop id");
+        flowerService=new FlowerService();
+        userService=new UserService();
+        flowerShopService=new FlowerShopService();
         // System.out.println("sdvcsdcv");
         dataF= FXCollections.observableArrayList();
         dataU= FXCollections.observableArrayList();
@@ -126,9 +129,9 @@ public class AdminController extends Controller implements  Initializable {
         }
 
     }
-   /* @FXML
-    void addOnAction(ActionEvent event) {
-        try {
+    @FXML
+    void addOnAction(ActionEvent event) {}
+       /* try {
             if(!flowsP.getFC().existingShop(Integer.parseInt(vAdmin.getNewId().getText()))){
                 showErrorDialog("The flower shop with id"+ Integer.parseInt(vAdmin.getNewId().getText())+ "does not exist!");
             }
@@ -155,19 +158,19 @@ public class AdminController extends Controller implements  Initializable {
             }
         }catch(Exception e){
             showErrorDialog("Missing attributes!");
-        }
-    }
+        }*/
+
 
     @FXML
     void deleteOAction(ActionEvent event) {
-        try {
+        /*try {
             User u = vAdmin.getUsersTable().getSelectionModel().getSelectedItem();
             //userP.getUsers().getUsers().remove(u);
             FlowerShop f = flowsP.getFlowerShop(u.getId());
             // userP.deleteUser(u, f, usersTable);
         }catch(Exception e){
             showErrorDialog("Please select the item that you want to delete!");
-        }
+        }*/
 
     }
 
@@ -218,7 +221,7 @@ public class AdminController extends Controller implements  Initializable {
 
 
 
-    public void updateName(){
+    /*public void updateName(){
         //Flower flower=flowerTable.getSelectionModel().getSelectedItem();
         User user=vAdmin.getUsersTable().getSelectionModel().getSelectedItem();
 
@@ -240,10 +243,10 @@ public class AdminController extends Controller implements  Initializable {
         User user=vAdmin.getUsersTable().getSelectionModel().getSelectedItem();
         FlowerShop f=flowsP.getFlowerShop(Integer.parseInt(vAdmin.getNewId().getText()));
         // userP.updateId(dataU,user,newId.getText(),f);
-    }
+    }*/
     @FXML
     void updateOnAction(ActionEvent event) {
-        try {
+        /*try {
             User user = vAdmin.getUsersTable().getSelectionModel().getSelectedItem();
 
             dataU = vAdmin.getUsersTable().getItems();
@@ -277,9 +280,9 @@ public class AdminController extends Controller implements  Initializable {
         }
         catch(Exception e){
             showErrorDialog("Please select the item!");
-        }
+        }*/
 
-    }*/
+    }
 
 
 

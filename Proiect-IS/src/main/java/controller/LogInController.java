@@ -56,7 +56,7 @@ public class LogInController<VLogin> implements Initializable {
         switch(s){
             case "Administrator":System.out.println("Admin");
                 errorLabel.setText("User:"+usern);
-                initNewPresenter(adminContr,"src\\main\\java\\View\\admin.fxml","Admin:"+usern);
+                initNewPresenter(adminContr,"src\\main\\java\\view\\admin.fxml","Admin:"+usern);
                 break;
             case "Employee" :System.out.println("Employee");
                 errorLabel.setText("User:"+usern);
@@ -126,12 +126,12 @@ public class LogInController<VLogin> implements Initializable {
 
             FileInputStream fxmlStream = null;
             fxmlStream = new FileInputStream(path);
-            System.out.println("1111");
+
             Parent parent=loader.load(fxmlStream);
 
             c=loader.getController();
             Stage stage =new Stage();
-
+            System.out.println("1111");
 
             stage.setTitle(title);
             Scene s=new Scene(parent);
@@ -142,11 +142,12 @@ public class LogInController<VLogin> implements Initializable {
 
         } catch(IOException e){
             System.out.println("eferg");
+            System.out.println(e.getMessage());
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        logInService=new LogInService();
     }
 }

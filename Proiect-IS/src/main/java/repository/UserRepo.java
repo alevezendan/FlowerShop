@@ -21,14 +21,13 @@ public class UserRepo {
 		em.close();
 	}
 
-	public User logIn(String username) {
+	public List<User> logIn(String username) {
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		User user = em.createQuery("SELECT s FROM user s where s.Username =: username", User.class)
-				.setParameter("username",username )
-				.getSingleResult();
-		em.close();
-		return user;
+		List<User> result = em.createQuery("from User", User.class).getResultList();
+		em.getTransaction().commit();
+
+		return result;
 	}
 
 	public void deleteUser(User user){
@@ -42,7 +41,7 @@ public class UserRepo {
 	public List<User> showAllUsers() {
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		List<User> users = em.createQuery("SELECT * FROM User", User.class)
+		List<User> users = em.createQuery("SELECT u FROM User u", User.class)
 				.getResultList();
 		em.close();
 		return users;

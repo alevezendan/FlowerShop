@@ -11,6 +11,9 @@ import java.util.List;
 public class LogInService {
 
     private UserRepo userRepo;
+    public LogInService(){
+        this.userRepo=new UserRepo();
+    }
 
     public void showErrorDialog(String error) {
         Dialog<String> dialog = new Dialog<String>();
@@ -43,11 +46,12 @@ public class LogInService {
         if (!found) {
             showErrorDialog("User not found");
         } else {
-            User user = userRepo.logIn(username);
-            if (user.getRole().equals("Administrator")) {
+            List<User> user = userRepo.logIn(username);
+            User u=user.get(0);
+            if (u.getRole().equals("Administrator")) {
                 return "Administrator";
             } else {
-                if (user.getRole().equals("Employee")) {
+                if (u.getRole().equals("Employee")) {
                     return "Employee";
                 }
             }

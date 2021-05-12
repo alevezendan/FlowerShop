@@ -45,16 +45,16 @@ public class ApplicationStart extends  Application {
 
         User user = new User();
         user.setFlowerShop(fS);
-        user.setName("Nati");
+        user.setName("Ale");
         user.setRole("Administrator");
-        user.setPassword("nasuc");
-        user.setUsername("nati");
+        user.setPassword("alebale");
+        user.setUsername("aleb");
         user.setId(3);
 
         ArrayList<User> list1=new ArrayList<>();
         list1.add(user);
         fS.setUsers(list1);
-      // ur.insertNewUser(user);
+       ur.insertNewUser(user);
         launch(args);
     }
 

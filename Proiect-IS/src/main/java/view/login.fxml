@@ -28,11 +28,6 @@
                                 <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect-IS/Proiect-IS/src/main/java/View/300px-Flag_of_France.svg.png" />
                             </image>
                         </ImageView>
-                        <ImageView fitHeight="23.0" fitWidth="34.0" layoutX="112.0" layoutY="363.0">
-                            <image>
-                                <Image url="@Romania.jpg" />
-                            </image>
-                        </ImageView>
                         <ImageView fitHeight="23.0" fitWidth="34.0" layoutX="68.0" layoutY="363.0">
                             <image>
                                 <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect-IS/Proiect-IS/src/main/java/View/Drapelul-Turciei.jpg" />
