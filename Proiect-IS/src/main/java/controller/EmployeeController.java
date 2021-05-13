@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import service.FlowerShopService;
 //import lombok.Data;
 //import lombok.RequiredArgsConstructor;
 
@@ -30,6 +31,7 @@ public class EmployeeController extends Controller implements Initializable {
     private Stage stage;
 
     private FlowerService flowS;
+    private FlowerShopService flowsS;
     // private FlowerMapper flowerMapper;
     private FlowerController flowerController;
 
@@ -79,8 +81,10 @@ public class EmployeeController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        flowsS=new FlowerShopService();
         u=flowerController.getUserService().getU(stage.getTitle());
         f=u.getFlowerShop();
+        //f=flowsS.getFlowerShopById(u.getFlowerShopId());
         dataF= FXCollections.observableArrayList();
         flowerTable.getSelectionModel (). setCellSelectionEnabled (true);
         //initCombo();

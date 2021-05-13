@@ -4,13 +4,14 @@ package entity;
 
 //import lombok.Data;
 
+import builder.FlowerP;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 //@Data
 @Table(name = "Flowers")
-public class Flower {
+public class Flower implements FlowerP {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)

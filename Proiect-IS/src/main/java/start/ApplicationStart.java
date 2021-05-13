@@ -25,36 +25,87 @@ public class ApplicationStart extends  Application {
         UserRepo ur = new UserRepo();
         FlowerShopRepo fsr=new FlowerShopRepo();
         FlowerRepo fr=new FlowerRepo();
-        FlowerShop fS=new FlowerShop();
-        fS.setName("The Flower Studio");
-        fS.setId(2);
-        fsr.insertNewFlowerShop(fS);
+        FlowerShop fS1=new FlowerShop();
+        fS1.setName("The Flower Studio");
+        fS1.setId(1);
+        FlowerShop fS2=new FlowerShop();
+        fS2.setName("Blossom House");
+        fS2.setId(2);
+        FlowerShop fS3=new FlowerShop();
+        fS3.setName("Rose and Co");
+        fS3.setId(3);
+        fsr.insertNewFlowerShop(fS1);
+        fsr.insertNewFlowerShop(fS2);
+        fsr.insertNewFlowerShop(fS3);
         Flower f1=new Flower();
         f1.setAvailability("Yes");
         f1.setColor("Red");
 
-        f1.setFlowerShop(fS);
+        f1.setFlowerShop(fS1);
         f1.setName("Tulip");
         f1.setPrice(20.5);
         f1.setId(1);
         f1.setQuantity(12);
+        Flower f2=new Flower();
+        f2.setAvailability("Yes");
+        f2.setColor("White");
+
+        f2.setFlowerShop(fS1);
+        f2.setName("Rose");
+        f2.setPrice(15);
+        f2.setId(2);
+        f2.setQuantity(50);
+        Flower f3=new Flower();
+        f3.setAvailability("Yes");
+        f3.setColor("Pink");
+
+        f3.setFlowerShop(fS2);
+        f3.setName("Tulip");
+        f3.setPrice(10.2);
+        f3.setId(3);
+        f3.setQuantity(30);
         ArrayList<Flower> list=new ArrayList<Flower>();
         list.add(f1);
+        list.add(f2);
         fr.insertFlower(f1);
-        fS.setFlowers(list);
+        fr.insertFlower(f2);
+        fr.insertFlower(f3);
+        fS1.setFlowers(list);
 
-        User user = new User();
-        user.setFlowerShop(fS);
-        user.setName("Ale");
-        user.setRole("Administrator");
-        user.setPassword("alebale");
-        user.setUsername("aleb");
-        user.setId(3);
-
+        User user1 = new User();
+        user1.setFlowerShop(fS1);
+       // user1.setFlowerShopId(fS1.getId());
+        user1.setName("Ale");
+        user1.setRole("Administrator");
+        user1.setPassword("alebale");
+        user1.setUsername("aleb");
+        user1.setId(1);
+        User user2 = new User();
+        user2.setFlowerShop(fS1);
+       // user2.setFlowerShopId(fS1.getId());
+        user2.setName("Nati");
+        user2.setRole("Employee");
+        user2.setPassword("nasuc");
+        user2.setUsername("nati");
+        user2.setId(2);
+        User user3 = new User();
+        user3.setFlowerShop(fS2);
+        //user3.setFlowerShopId(fS2.getId());
+        user3.setName("Alex");
+        user3.setRole("Administrator");
+        user3.setPassword("alexneet");
+        user3.setUsername("miau");
+        user3.setId(3);
         ArrayList<User> list1=new ArrayList<>();
-        list1.add(user);
-        fS.setUsers(list1);
-       ur.insertNewUser(user);
+        list1.add(user1);
+        list1.add(user2);
+        fS1.setUsers(list1);
+        for(User y: list1){
+            System.out.println(y.getName());
+        }
+       ur.insertNewUser(user1);
+        ur.insertNewUser(user2);
+        ur.insertNewUser(user3);
         launch(args);
     }
 

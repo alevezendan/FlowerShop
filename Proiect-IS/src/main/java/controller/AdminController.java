@@ -93,6 +93,7 @@ public class AdminController extends Controller implements  Initializable {
         flowersTable.setVisible(true);
 
         FlowerShop f=flowerShopService.getFlowerShopByName("The Flower Studio");
+
         usersTable.setVisible(false);
         flowerService.showFlowers(flowersTable,f,dataF);
         //userP.showFlowers(flowersTable,f,dataF);
@@ -134,8 +135,16 @@ public class AdminController extends Controller implements  Initializable {
         try {
 
             String v = combo.getValue();
-            FlowerShop f = flowerShopService.getFlowerShopByName(v);
-            userService.showUsers(usersTable, v, dataU, f, name, role, username, id);
+            if(v.equals("All shops")){
+                flowersTable.setVisible(false);
+                userService.showUsers(usersTable, v, dataU, null, name, role, username, id);
+            }else {
+
+                FlowerShop f = flowerShopService.getFlowerShopByName(v);
+                System.out.println(f.getName() + " din show flowers");
+                flowersTable.setVisible(false);
+                userService.showUsers(usersTable, v, dataU, f, name, role, username, id);
+            }
             // userP.showUsers(usersTable, v, dataU, f, name, role, username, id);
         }catch(Exception e){
             showErrorDialog("Flower Shop not selected!");
@@ -143,7 +152,19 @@ public class AdminController extends Controller implements  Initializable {
 
     }
     @FXML
-    void addOnAction(ActionEvent event) {}
+    void addOnAction(ActionEvent event) {
+        //dataU = usersTable.getItems();
+        FlowerShop f=null;
+        try
+        {
+             f = flowerShopService.getFlowerShopByName(combo.getValue());
+        }catch(Exception e) {
+            showErrorDialog("Please select flower shop!");
+        }
+
+        userService.addUser(f,usersTable,dataU,newName,newUsername,newRole);
+
+    }
        /* try {
             if(!flowsP.getFC().existingShop(Integer.parseInt(vAdmin.getNewId().getText()))){
                 showErrorDialog("The flower shop with id"+ Integer.parseInt(vAdmin.getNewId().getText())+ "does not exist!");
@@ -176,22 +197,21 @@ public class AdminController extends Controller implements  Initializable {
 
     @FXML
     void deleteOAction(ActionEvent event) {
-        /*try {
-            User u = vAdmin.getUsersTable().getSelectionModel().getSelectedItem();
+
+            User u = usersTable.getSelectionModel().getSelectedItem();
+            System.out.println(u.getName()+"sa vad daca a luat bine ce am selectat");
             //userP.getUsers().getUsers().remove(u);
-            FlowerShop f = flowsP.getFlowerShop(u.getId());
+            FlowerShop f = flowerShopService.getFlowerShopByUsername(u.getUsername());
+        System.out.println(f.getName()+"din delete");
+           // System.out.println(f.getName());
+        try {
+            userService.deleteUser(u,usersTable,dataU,f,name,role,username,id);
             // userP.deleteUser(u, f, usersTable);
         }catch(Exception e){
             showErrorDialog("Please select the item that you want to delete!");
-        }*/
+        }
 
     }
-
-
-
-
-
-
 
 
     public void allUsers(){
@@ -232,73 +252,13 @@ public class AdminController extends Controller implements  Initializable {
     }
 
 
-
-
-    /*public void updateName(){
-        //Flower flower=flowerTable.getSelectionModel().getSelectedItem();
-        User user=vAdmin.getUsersTable().getSelectionModel().getSelectedItem();
-
-        //userP.updateName(dataU,user,newName.getText());
-    }
-    public void updateRole(){
-        //Flower flower=flowerTable.getSelectionModel().getSelectedItem();
-        User user=vAdmin.getUsersTable().getSelectionModel().getSelectedItem();
-
-        // userP.updateRole(dataU,user,newRole.getText());
-    }
-    public void updateUsername(){
-        //Flower flower=flowerTable.getSelectionModel().getSelectedItem();
-        User user=vAdmin.getUsersTable().getSelectionModel().getSelectedItem();
-        // userP.updateUsername(dataU,user,newUsername.getText());
-    }
-    public void updateShopId(){
-
-        User user=vAdmin.getUsersTable().getSelectionModel().getSelectedItem();
-        FlowerShop f=flowsP.getFlowerShop(Integer.parseInt(vAdmin.getNewId().getText()));
-        // userP.updateId(dataU,user,newId.getText(),f);
-    }*/
     @FXML
     void updateOnAction(ActionEvent event) {
-        /*try {
-            User user = vAdmin.getUsersTable().getSelectionModel().getSelectedItem();
 
-            dataU = vAdmin.getUsersTable().getItems();
-            if (!vAdmin.getNewName().getText().equals("")) {
-                //updateName();
-                //userP.updateName(dataU, user, newName.getText());
-            }
-            if (!vAdmin.getNewRole().getText().equals("")) {
-                //System.out.println(newRole.getText());
-                //updateRole();
-                // userP.updateRole(dataU, user, newRole.getText());
-            }
-            if (!vAdmin.getNewUsername().getText().equals("")) {
-                //updateUsername();
-                //  userP.updateUsername(dataU, user, newUsername.getText());
-            }
-            if (!vAdmin.getNewId().getText().equals("")) {
-                //updateShopId();
-                FlowerShop f = flowsP.getFlowerShop(Integer.parseInt(vAdmin.getNewId().getText()));
-                // userP.updateId(dataU, user, newId.getText(), f);
-            }
-
-            FlowerShop f1 = flowsP.getFlowerShop(vAdmin.getCombo().getValue());
-            vAdmin.getUsersTable().getItems().clear();
-            // for (User ul : userP.getUsers().getUsers()) {
-            for (User ul : f1.getUsers()) {
-                dataU.add(ul);
-            }
-            vAdmin.getUsersTable().setItems(dataU);
-            vAdmin.getNewName().clear();//newPrice.clear();newColor.clear();newAvail.clear();newQuant.clear();
-        }
-        catch(Exception e){
-            showErrorDialog("Please select the item!");
-        }*/
-
+        User u = usersTable.getSelectionModel().getSelectedItem();
+        dataU = usersTable.getItems();
+        userService.updateUser(usersTable,u,dataU,newName,newUsername,newRole);
     }
-
-
-
 
     @FXML
     void comboOnAction(ActionEvent event) {

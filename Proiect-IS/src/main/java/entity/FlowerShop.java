@@ -2,13 +2,15 @@ package entity;
 
 //import lombok.Data;
 
+import builder.FlowerShopP;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 //@Data
 @Table(name = "FlowerShop")
-public class FlowerShop {
+public class FlowerShop implements FlowerShopP {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,6 +19,7 @@ public class FlowerShop {
     private String name;
 
     @OneToMany(mappedBy = "flowerShop")
+    //@OneToMany(mappedBy = "flowerShopId")
     private List<User> users;
 
     @OneToMany(mappedBy = "flowerShop")
@@ -52,5 +55,10 @@ public class FlowerShop {
 
     public void setFlowers(List<Flower> flowers) {
         this.flowers = flowers;
+    }
+
+    public void deleteUser(User u){
+        this.users.remove(u);
+
     }
 }

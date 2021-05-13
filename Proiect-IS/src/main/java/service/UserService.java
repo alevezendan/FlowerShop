@@ -8,11 +8,14 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Users;
 import repository.UserRepo;
-
+import java.math.*;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.Flow;
 //import lombok.Data;
 
 
@@ -21,10 +24,12 @@ public class UserService{
    private Users users;
    private UserRepo userRepo;
    private FlowerShopService flowerShopService;
+   private FlowerShop flowerShop;
    public UserService(){
        this.userRepo=new UserRepo();
        this.users=new Users();
        flowerShopService=new FlowerShopService();
+       this.flowerShop=new FlowerShop();
    }
 
     public Users getUsers() {
@@ -54,36 +59,23 @@ public class UserService{
     }
 
     public void  populateUserTable(TableColumn name,TableColumn role,TableColumn username,TableColumn id){
-        //name = new TableColumn<User,String>("Name");
         name.setMinWidth(90);
         name.setCellValueFactory(
                 new PropertyValueFactory<>("name"));
-
-        //role = new TableColumn("Role");
         role.setMinWidth(60);
         role.setCellValueFactory(
                 new PropertyValueFactory<>("role"));
-
-
-        //flowersTable.setItems((ObservableList<Flower>) fShop.getFlowers());
-        // username= new TableColumn("Username");
         username.setCellValueFactory(new PropertyValueFactory<>("username"));
-
-        // id= new TableColumn("Flower shop id");
         id.setMinWidth(80);
         id.setCellValueFactory(
-                new PropertyValueFactory<>("id"));
+                new PropertyValueFactory<>("flowerShop"));
     }
 
 
-    public void showUsers(ComboBox<String> combo){
-       if(combo.getValue().equals("All Users")){
-
-       }
-    }
     public void showAllUsers(ObservableList<User> dataU){
         dataU.removeAll();
-        for(User u:users.getUsers()){
+        List<User> users=userRepo.showAllUsers();
+        for(User u:users){
             dataU.add(u);
         }
     }
@@ -94,13 +86,18 @@ public class UserService{
 
     public void showSpecificUser(FlowerShop f, ObservableList<User> dataU){
         dataU.removeAll();
-        for(User u:f.getUsers()){
-            dataU.add(u);
+        List<User> users=userRepo.showAllUsers();
+        //for(User u:f.getUsers()){
+        for(User u:users){
+            if(u.getFlowerShop().getName().equals(f.getName())) {
+                dataU.add(u);
+            }
         }
     }
     public void showUsers(TableView<User> usersTable, String value, ObservableList<User> dataU, FlowerShop f, TableColumn name, TableColumn role, TableColumn username, TableColumn id){
         usersTable.getItems().clear();
         usersTable.getColumns().clear();
+
         populateUserTable(name,role,username,id);
         // FlowerShop f;
         if(value.equals("All shops")) {
@@ -110,7 +107,7 @@ public class UserService{
         }
         else{
 
-            f=flowerShopService.getFlowerShopByName(value);
+           // f=flowerShopService.getFlowerShopByName(value);
             //specificUsers(f);
             showSpecificUser(f,dataU);
 
@@ -120,5 +117,79 @@ public class UserService{
         usersTable.getColumns().addAll(name,role,username,id);
         //flowersTable.setVisible(false);
         usersTable.setVisible(true);
+    }
+
+    public void deleteUser(User u,TableView<User> usersTable,ObservableList<User> dataU,FlowerShop f,TableColumn name, TableColumn role, TableColumn username, TableColumn id){
+           try {
+               //userRepo.deleteUser(u);
+               userRepo.deleteUser(u.getUsername());
+
+           }catch(Exception e){
+               e.printStackTrace();
+           }
+        System.out.println(f.getName()+" din user service");
+        f.deleteUser(u);
+            usersTable.getItems().clear();
+            usersTable.getColumns().clear();
+            populateUserTable(name,role,username,id);
+            try {
+
+                List<User> us = userRepo.showAllUsers();
+                dataU.removeAll();
+                for(User x:us){
+                    if(x.getFlowerShop().getName().equals(f.getName())){
+                        dataU.add(x);
+                    }
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+        }
+
+        usersTable.getColumns().removeAll();
+        usersTable.setItems(dataU);
+        usersTable.getColumns().addAll(name,role,username,id);
+        //flowersTable.setVisible(false);
+        usersTable.setVisible(true);
+    }
+
+    public void updateUser(TableView<User>usersTable, User user, ObservableList<User> dataU, TextField newName, TextField newUsername,TextField newRole){
+        if (!newName.getText().equals("")) {
+            user.setName(newName.getText());
+            userRepo.updateName(user,newName.getText());
+        }
+        if (!newRole.getText().equals("")) {
+            user.setRole(newRole.getText());
+            userRepo.updateRole(user,newRole.getText());
+        }
+        if (!newUsername.getText().equals("")) {
+            user.setUsername(newUsername.getText());
+            userRepo.updateUsername(user,newUsername.getText());
+        }
+        usersTable.getItems().clear();
+        List<User> users=userRepo.showAllUsers();
+        for(User x:users){
+            if(x.getFlowerShop().getName().equals(user.getFlowerShop().getName())){
+                dataU.add(x);
+            }
+        }
+
+        usersTable.setItems(dataU);
+        newName.clear();newUsername.clear();newRole.clear();
+    }
+
+    public void addUser(FlowerShop f,TableView<User>usersTable,  ObservableList<User> dataU, TextField newName, TextField newUsername,TextField newRole){
+        Random r = new Random();
+        int low = 4;
+        int high = 1000;
+        int id = r.nextInt(high-low) + low;
+        //usersTable.getItems().clear();
+       User user=new User(id,newName.getText(),newRole.getText(),newUsername.getText(),f);
+       f.getUsers().add(user);
+       userRepo.insertNewUser(user);
+       dataU.add(user);
+       usersTable.setItems(dataU);
+       newName.clear();
+       newRole.clear();
+       newUsername.clear();
     }
 }

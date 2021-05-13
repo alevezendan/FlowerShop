@@ -7,6 +7,7 @@ import entity.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.util.List;
 
 public class UserRepo {
@@ -30,12 +31,21 @@ public class UserRepo {
 		return result;
 	}
 
-	public void deleteUser(User user){
+	//public void deleteUser(User user){
+	public void deleteUser(String username){
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		em.detach(user);
+		Query query = em.createQuery("DELETE FROM User u WHERE u.username = :username ");
+		((Query) query).setParameter("username", username);
+		int rowsDeleted = query.executeUpdate();
+		System.out.println("entities deleted: " + rowsDeleted);
 		em.getTransaction().commit();
 		em.close();
+		/*em.remove(user);
+		em.detach(user);
+
+		em.getTransaction().commit();
+		em.close();*/
 	}
 
 	public List<User> showAllUsers() {
@@ -49,15 +59,17 @@ public class UserRepo {
 	public List<User> showUsersByFlowerShop(FlowerShop flowerShop) {
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		List<User> users = em.createQuery("SELECT u FROM User u where u.FlowerShop=flowershop ", User.class).
-				setParameter("FlowerShop",flowerShop).getResultList();
+		/*List<User> users = em.createQuery("SELECT u FROM User u where u.FlowerShop=flowershop ", User.class).
+				setParameter("FlowerShop",flowerShop).getResultList();*/
+		System.out.println(flowerShop);
+		List<User> users=em.createQuery("from User u WHERE u.FlowerShop=:flowershop",User.class).getResultList();
 		em.close();
 		return users;
 	}
 	public void updateName(User user, String name){
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		em.createQuery("UPDATE user u SET u.Name =:name WHERE u.idClass =:id")
+		em.createQuery("UPDATE User u SET u.name =:name WHERE u.id =:id")
 				.setParameter("id", user.getId()).setParameter("name", name).executeUpdate();
 		em.getTransaction().commit();
 		em.close();
@@ -65,7 +77,7 @@ public class UserRepo {
 	public void updateUsername(User user, String username){
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		em.createQuery("UPDATE user u SET u.Username =:username WHERE u.idClass =:id")
+		em.createQuery("UPDATE User u SET u.username =:username WHERE u.id =:id")
 				.setParameter("id", user.getId()).setParameter("username", username).executeUpdate();
 		em.getTransaction().commit();
 		em.close();
@@ -73,7 +85,7 @@ public class UserRepo {
 	public void updateRole(User user, String role){
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
-		em.createQuery("UPDATE user u SET u.Role =:role WHERE u.idClass =:id")
+		em.createQuery("UPDATE User u SET u.role =:role WHERE u.id =:id")
 				.setParameter("id", user.getId()).setParameter("role", role).executeUpdate();
 		em.getTransaction().commit();
 		em.close();

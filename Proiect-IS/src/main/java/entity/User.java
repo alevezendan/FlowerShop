@@ -28,6 +28,32 @@ public class User {
 	@ManyToOne
 	@JoinColumn(name = "id_flowerShop")
 	private FlowerShop flowerShop;
+	//private int flowerShopId;
+
+	/*public int getFlowerShopId() {
+		return flowerShopId;
+	}
+
+	public void setFlowerShopId(int flowerShopId) {
+		this.flowerShopId = flowerShopId;
+	}*/
+	public User(){}
+	public User(int id, String name, String role, String username, String password, FlowerShop flowerShop) {
+		this.id = id;
+		this.name = name;
+		this.role = role;
+		this.username = username;
+		this.password = password;
+		this.flowerShop = flowerShop;
+	}
+
+	public User(int id, String name, String role, String username, FlowerShop flowerShop) {
+		this.id = id;
+		this.name = name;
+		this.role = role;
+		this.username = username;
+		this.flowerShop = flowerShop;
+	}
 
 	public int getId() {
 		return id;
@@ -76,4 +102,6 @@ public class User {
 	public void setFlowerShop(FlowerShop flowerShop) {
 		this.flowerShop = flowerShop;
 	}
+
+
 }
