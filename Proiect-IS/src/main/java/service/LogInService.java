@@ -1,12 +1,12 @@
 package service;
 
 import entity.User;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
+import javafx.scene.control.*;
 import repository.UserRepo;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LogInService {
 
@@ -24,13 +24,16 @@ public class LogInService {
         dialog.showAndWait();
     }
 
-    public String logIn(String username, String password) {
+   // public String logIn(String username, String password) {
+   public User logIn(String username, String password) {
 
         boolean found = false;
         boolean usern = false;
         boolean pass = false;
+        User foundUser=null;
         List<User> users = userRepo.showAllUsers();
         for (User u : users) {
+            System.out.println(u.getUsername()+" "+u.getRole()+" "+u.getPassword());
             if (u.getUsername().equals(username)) {
                 usern = true;
             }
@@ -40,23 +43,54 @@ public class LogInService {
             }
             if (usern && pass) {
                 found = true;
+                 foundUser=u;
+                break;
             }
 
         }
-        if (!found) {
-            showErrorDialog("User not found");
-        } else {
-            List<User> user = userRepo.logIn(username);
-            User u=user.get(0);
-            if (u.getRole().equals("Administrator")) {
+        if (found) {
+            return foundUser;
+            //showErrorDialog("User not found");
+
+            /*List<User> user = userRepo.logIn(username);
+           // User u=user.get(0);
+            if (foundUser.getRole().equals("Administrator")) {
                 return "Administrator";
             } else {
-                if (u.getRole().equals("Employee")) {
+                if (foundUser.getRole().equals("Employee")) {
                     return "Employee";
                 }
-            }
+            }*/
         }
-        return "Error";
+        //return "Error";
+       return null;
+    }
+
+    public void changeToFrench(TextField usern, TextField pass, Button login) {
+        Locale locale=Locale.FRENCH;
+        ResourceBundle labels = ResourceBundle.getBundle("MyBundle_fr", locale);
+        //System.out.println(labels.getString("w1"));
+        usern.setText(labels.getString("w3"));
+        pass.setText(labels.getString("w2"));
+        login.setText(labels.getString("w1"));
+    }
+
+    public void changeToRo(TextField usern, TextField pass, Button login) {
+        Locale locale=Locale.FRENCH;
+        ResourceBundle labels = ResourceBundle.getBundle("MyBundle_ro", locale);
+        //System.out.println(labels.getString("w1"));
+        usern.setText(labels.getString("w3"));
+        pass.setText(labels.getString("w2"));
+        login.setText(labels.getString("w1"));
+    }
+
+    public void changeToTurkish(TextField usern, TextField pass, Button login) {
+        Locale locale=Locale.FRENCH;
+        ResourceBundle labels = ResourceBundle.getBundle("MyBundle_tr", locale);
+        //System.out.println(labels.getString("w1"));
+        usern.setText(labels.getString("w3"));
+        pass.setText(labels.getString("w2"));
+        login.setText(labels.getString("w1"));
     }
 }
 

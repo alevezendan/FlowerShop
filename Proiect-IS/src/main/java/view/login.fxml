@@ -23,26 +23,52 @@
                 <Pane prefHeight="400.0" prefWidth="600.0">
                     <children>
                         <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="111.0" prefHeight="17.0" prefWidth="185.0" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF;" />
-                        <ImageView fitHeight="23.0" fitWidth="34.0" layoutX="22.0" layoutY="363.0">
-                            <image>
-                                <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect-IS/Proiect-IS/src/main/java/View/300px-Flag_of_France.svg.png" />
-                            </image>
+                  <Button fx:id="frButton" layoutX="123.0" layoutY="363.0" mnemonicParsing="false" onAction="#frenchOnAction" prefHeight="31.0" prefWidth="32.0">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="30.0">
+                           <image>
+                              <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect/FlowerShop/Proiect-IS/src/main/java/view/300px-Flag_of_France.svg.png" />
+                           </image>
                         </ImageView>
-                        <ImageView fitHeight="23.0" fitWidth="34.0" layoutX="68.0" layoutY="363.0">
-                            <image>
-                                <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect-IS/Proiect-IS/src/main/java/View/Drapelul-Turciei.jpg" />
-                            </image>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="turkButton" layoutX="67.0" layoutY="363.0" mnemonicParsing="false" onAction="#turkishOnAction" prefHeight="31.0" prefWidth="24.0">
+                     <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="30.0">
+                                  <image>
+                                      <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect/FlowerShop/Proiect-IS/src/main/java/view/Drapelul-Turciei.jpg" />
+                                  </image>
+                              </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="roButton" layoutX="10.0" layoutY="363.0" mnemonicParsing="false" onAction="#roOnAction" prefHeight="31.0" prefWidth="27.0">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="30.0">
+                           <image>
+                              <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect/FlowerShop/Proiect-IS/src/main/java/view/Romania.jpg" />
+                           </image>
                         </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="178.0" layoutY="362.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="33.0" prefWidth="35.0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0">
+                           <image>
+                              <Image url="file:/C:/Ale/AN3/Sem2/PS/Proiect/FlowerShop/Proiect-IS/src/main/java/view/icons8-rotate-left-100.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                     </children></Pane>
                 <PasswordField fx:id="password" layoutX="67.0" layoutY="200.0" onAction="#passwordOnAction" />
                 <TextField fx:id="username" layoutX="67.0" layoutY="157.0" onAction="#userNameOnAction" />
                 <Button fx:id="login" layoutX="118.0" layoutY="253.0" mnemonicParsing="false" onAction="#loginOnAction" style="-fx-background-color: #759B84; -fx-text-fill: #FFFFFF;" text="LogIn" />
-                <TextField alignment="CENTER" layoutX="14.0" layoutY="156.0" prefHeight="27.0" prefWidth="57.0" style="-fx-background-color: -fx-control-inner-backgrountransparent; -fx-text-fill:  #FFFFFF" text="Username">
+                <TextField fx:id="usern" alignment="CENTER" layoutX="14.0" layoutY="156.0" prefHeight="27.0" prefWidth="57.0" style="-fx-background-color: -fx-control-inner-backgrountransparent; -fx-text-fill:  #FFFFFF" text="Username">
                     <font>
                         <Font name="Dubai Regular" size="10.0" />
                     </font>
                 </TextField>
-                <TextField layoutX="13.0" layoutY="201.0" prefHeight="23.0" prefWidth="58.0" style="-fx-background-color: transparent;-fx-text-fill:  #FFFFFF" text="Password">
+                <TextField fx:id="pass" layoutX="13.0" layoutY="201.0" prefHeight="23.0" prefWidth="58.0" style="-fx-background-color: transparent;-fx-text-fill:  #FFFFFF" text="Password">
                     <font>
                         <Font size="10.0" />
                     </font>

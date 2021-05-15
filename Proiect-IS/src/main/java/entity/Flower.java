@@ -36,6 +36,19 @@ public class Flower implements FlowerP {
     @JoinColumn(name = "id_flowerShop")
     private FlowerShop flowerShop;
 
+    public Flower() {
+    }
+
+    public Flower(int id, String name, String color, double price,String availability,double quantity,  FlowerShop flowerShop) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
+        this.quantity = quantity;
+        this.price = price;
+        this.availability = availability;
+        this.flowerShop = flowerShop;
+    }
+
     public int getId() {
         return id;
     }
@@ -90,5 +103,18 @@ public class Flower implements FlowerP {
 
     public void setFlowerShop(FlowerShop flowerShop) {
         this.flowerShop = flowerShop;
+    }
+
+    @Override
+    public String toString() {
+        return "Flower name:" +
+                name +
+                ", price=" + price +
+                ", color=" + color +
+                ", disponibility=" + availability+
+                ", quantity=" + quantity+
+                ", flowerShop="+ flowerShop.getName()
+
+                ;
     }
 }

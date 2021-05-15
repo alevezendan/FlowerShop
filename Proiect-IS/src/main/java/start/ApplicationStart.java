@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import repository.FlowerRepo;
 import repository.FlowerShopRepo;
 import repository.UserRepo;
+import resources.PropertiesDemo;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -107,6 +108,7 @@ public class ApplicationStart extends  Application {
         ur.insertNewUser(user2);
         ur.insertNewUser(user3);
         launch(args);
+
     }
 
     @Override

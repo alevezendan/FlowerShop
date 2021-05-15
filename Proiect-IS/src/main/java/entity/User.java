@@ -30,13 +30,24 @@ public class User {
 	private FlowerShop flowerShop;
 	//private int flowerShopId;
 
-	/*public int getFlowerShopId() {
-		return flowerShopId;
+	@Column(name = "language")
+	private String language;
+
+	public String getLanguage() {
+		return language;
 	}
 
-	public void setFlowerShopId(int flowerShopId) {
-		this.flowerShopId = flowerShopId;
-	}*/
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	/*public int getFlowerShopId() {
+            return flowerShopId;
+        }
+
+        public void setFlowerShopId(int flowerShopId) {
+            this.flowerShopId = flowerShopId;
+        }*/
 	public User(){}
 	public User(int id, String name, String role, String username, String password, FlowerShop flowerShop) {
 		this.id = id;

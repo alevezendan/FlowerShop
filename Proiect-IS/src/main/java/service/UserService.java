@@ -50,8 +50,10 @@ public class UserService{
         combo.setItems(list);
     }
     public User getU(String n){
-        for(User u: users.getUsers()){
+       List<User> users=userRepo.showAllUsers();
+        for(User u: users){
             if(u.getUsername().equals(n)){
+                System.out.println(u.getUsername()+" "+u.getRole()+" "+u.getPassword()+" "+u.getLanguage());
                 return u;
             }
         }
@@ -191,5 +193,9 @@ public class UserService{
        newName.clear();
        newRole.clear();
        newUsername.clear();
+    }
+
+    public void updateLanguage(User user,String setLanguage) {
+       userRepo.updateLanguage(user,setLanguage);
     }
 }

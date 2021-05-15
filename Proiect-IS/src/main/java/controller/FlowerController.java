@@ -10,6 +10,10 @@ public class FlowerController {
     private UserService userService;
     private FlowerService flowerService;
 
+    public FlowerController(){
+        this.userService=new UserService();
+        this.flowerService=new FlowerService();
+    }
     public UserService getUserService() {
         return userService;
     }

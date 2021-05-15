@@ -1,5 +1,7 @@
 package controller;
 
+import entity.User;
+import model.Language;
 import service.LogInService;
 
 import javafx.event.ActionEvent;
@@ -10,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import service.UserService;
 //import lombok.Data;
 //import lombok.RequiredArgsConstructor;
 
@@ -21,6 +24,9 @@ import java.util.ResourceBundle;
 public class LogInController<VLogin> implements Initializable {
 
     private LogInService logInService;
+    private UserService userService;
+    private Language language;
+    private  String setLanguage;
     @FXML
     EmployeeController emplContr;
     @FXML
@@ -36,6 +42,22 @@ public class LogInController<VLogin> implements Initializable {
 
     @FXML
     private Button login;
+
+    @FXML
+    private Button frButton;
+
+    @FXML
+    private Button turkButton;
+
+    @FXML
+    private Button roButton;
+
+    @FXML
+    private TextField usern;
+
+    @FXML
+    private TextField pass;
+
     public void showErrorDialog(String error){
         Dialog<String> dialog = new Dialog<String>();
         dialog.setTitle("Error");
@@ -51,61 +73,27 @@ public class LogInController<VLogin> implements Initializable {
 
         String usern=username.getText();
         String pass=password.getText();
-        String s=logInService.logIn(usern,pass);
+        System.out.println(usern+" "+pass+" ");
+       // String s=logInService.logIn(usern,pass);
+        User u=logInService.logIn(usern,pass);
+        String s=u.getRole();
+        u.setLanguage(setLanguage);
+        userService.updateLanguage(u,setLanguage);
+        System.out.println(u.getUsername()+" "+u.getRole()+" "+u.getPassword()+" "+u.getLanguage());
         //String s="Admin";
         switch(s){
             case "Administrator":System.out.println("Admin");
                 errorLabel.setText("User:"+usern);
+
                 initNewPresenter(adminContr,"src\\main\\java\\view\\admin.fxml","Admin:"+usern);
                 break;
             case "Employee" :System.out.println("Employee");
                 errorLabel.setText("User:"+usern);
-                initNewPresenter(emplContr,"src\\main\\java\\view\\employee.fxml","Employee:"+usern);
+                initNewPresenter(emplContr,"src\\main\\java\\view\\employee.fxml",usern);
                 break;
             default:showErrorDialog("Error!");
 
         }
-
-        // FlowerShop f=flowsP.getFlowerShop(usern);
-        // String sid=Integer.toString(f.getId());
-        // System.out.println(sid);
-           /* if(!userP.validUser(usern,pass)) {
-                System.out.println("Invalid user");
-                if(usern==""){
-                    errorLabel.setText("Missing username!");
-                }
-                if(pass==""){
-                    errorLabel.setText("Missing password!");
-                }
-                if(usern=="" & pass==""){
-                    errorLabel.setText("Invalid operation!");
-                }
-                if (!userP.existentUser(usern)) {
-                    // showErrorDialog("User not found!");
-                    errorLabel.setText("User not found!");
-                } else {
-                    errorLabel.setText("Invalid password!");
-                }
-            }else{
-                System.out.println("Valid user!");
-                if (userP.isEmployee(usern)) {
-                    System.out.println("Employee");
-                    flowP.readXMLFile();
-                    errorLabel.setText("User:"+usern);
-                    //initNewPresenter(emplPres,"src\\main\\java\\View\\employee.fxml","Employee:"+usern);
-                    User u=userP.getU(usern);
-                    FlowerShop f=flowsP.getFlowerShop(u.getId());
-                    initNewPresenter(emplContr,"src\\main\\java\\View\\"+u.getId()+".fxml",usern);
-                    // System.out.println("de ce nu merge");
-                } else {
-                    if (userP.isAdmin(usern)) {
-                        System.out.println("Admin");
-                        errorLabel.setText("User:"+usern);
-                        initNewPresenter(adminContr,"src\\main\\java\\View\\admin.fxml","Admin:"+usern);
-                    }
-                }
-
-            }*/
 
     }
 
@@ -150,5 +138,33 @@ public class LogInController<VLogin> implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         logInService=new LogInService();
+        language=new Language();
+        userService=new UserService();
+    }
+
+    @FXML
+    void frenchOnAction(ActionEvent event) {
+        language.changeToLogInFrench(usern,pass,login);
+            //logInService.changeToFrench(usern,pass,login);
+        setLanguage="French";
+    }
+    @FXML
+    void roOnAction(ActionEvent event) {
+        language.changeToLogInRo(usern,pass,login);
+        //logInService.changeToRo(usern,pass,login);
+        setLanguage="Romanian";
+    }
+    @FXML
+    void turkishOnAction(ActionEvent event) {
+        language.changeToLogInTurkish(usern,pass,login);
+       // logInService.changeToTurkish(usern,pass,login);
+        setLanguage="Turkish";
+    }
+
+
+    @FXML
+    void backOnAction(ActionEvent event) {
+        language.changeToLogInDefault(usern,pass,login);
+
     }
 }

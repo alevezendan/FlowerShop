@@ -1,5 +1,6 @@
 package controller;
 
+import model.Language;
 import service.FlowerService;
 import service.FlowerShopService;
 import service.UserService;
@@ -27,6 +28,9 @@ public class AdminController extends Controller implements  Initializable {
     private FlowerService flowerService;
     private UserService userService;
     private FlowerShopService flowerShopService;
+    private User u;
+    private Stage stage;
+    private Language language;
     private TableColumn type,price,color,availab,quant,idF,name,role,username,id;
     @FXML
     private TableView<User> usersTable;
@@ -56,6 +60,22 @@ public class AdminController extends Controller implements  Initializable {
 
     @FXML
     private Button TheFlowerStudio;
+
+    @FXML
+    private Button update;
+
+    @FXML
+    private Button add;
+
+    @FXML
+    private Button view;
+
+    @FXML
+    private Button delete;
+
+    @FXML
+    private Label employees;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -76,6 +96,28 @@ public class AdminController extends Controller implements  Initializable {
         List<User> users=userService.getAllUsers();
         userService.getUsers().setUsers(users);
 
+    }
+
+    public void init(){
+        stage = (Stage) logOut.getScene().getWindow();
+        u=userService.getU(stage.getTitle());
+    }
+
+    @FXML
+    void refreshOnAction(ActionEvent event) {
+        init();
+        switchLanguage(u.getLanguage());
+    }
+    public void switchLanguage(String s){
+        switch(s){
+            case "French":language.changeToAdminFrench(employees,delete,view,update,logOut,newName,newName,newRole,newUsername);
+                break;
+            case "Turkish":language.changeToAdminTurkish(employees,delete,view,update,logOut,newName,newName,newRole,newUsername);
+                break;
+            case "Romanian":language.changeToAdminRo(employees,delete,view,update,logOut,newName,newName,newRole,newUsername);
+                break;
+
+        }
     }
 
     public void showErrorDialog(String error){
@@ -165,48 +207,16 @@ public class AdminController extends Controller implements  Initializable {
         userService.addUser(f,usersTable,dataU,newName,newUsername,newRole);
 
     }
-       /* try {
-            if(!flowsP.getFC().existingShop(Integer.parseInt(vAdmin.getNewId().getText()))){
-                showErrorDialog("The flower shop with id"+ Integer.parseInt(vAdmin.getNewId().getText())+ "does not exist!");
-            }
-            else {
-                if (!vAdmin.getNewRole().getText().equals("Employee") || !vAdmin.getNewRole().getText().equals("Administrator")){
-                    showErrorDialog("Incorrect role!");
-                }
-                else{
-                    //User newU = new User(newName.getText(), newRole.getText(), newUsername.getText(), Integer.parseInt(newId.getText()));
-                    //  newU.getFlowerShop().getUsers().add(newU);
-                    FlowerShop f = flowsP.getFlowerShop(Integer.parseInt(vAdmin.getNewId().getText()));
-                    FlowerShop f1 = flowsP.getFlowerShop(vAdmin.getCombo().getValue());
-                    if (f.getId() == f1.getId()) {
-                        // userP.addUser(newU, f, usersTable, dataU);
-                    }
-                    // f.getUsers().add(newU);
-                    //userP.getUsers().addUser(newU);
 
-                    vAdmin.getNewName().clear();
-                    vAdmin.getNewId().clear();
-                    vAdmin.getNewRole().clear();
-                    vAdmin.getNewUsername().clear();
-                }
-            }
-        }catch(Exception e){
-            showErrorDialog("Missing attributes!");
-        }*/
 
 
     @FXML
     void deleteOAction(ActionEvent event) {
 
             User u = usersTable.getSelectionModel().getSelectedItem();
-            System.out.println(u.getName()+"sa vad daca a luat bine ce am selectat");
-            //userP.getUsers().getUsers().remove(u);
             FlowerShop f = flowerShopService.getFlowerShopByUsername(u.getUsername());
-        System.out.println(f.getName()+"din delete");
-           // System.out.println(f.getName());
         try {
             userService.deleteUser(u,usersTable,dataU,f,name,role,username,id);
-            // userP.deleteUser(u, f, usersTable);
         }catch(Exception e){
             showErrorDialog("Please select the item that you want to delete!");
         }

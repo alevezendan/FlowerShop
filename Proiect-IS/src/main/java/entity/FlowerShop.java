@@ -61,4 +61,8 @@ public class FlowerShop implements FlowerShopP {
         this.users.remove(u);
 
     }
+
+    public void deleteFlower(Flower flower) {
+        this.flowers.remove(flower);
+    }
 }

@@ -92,4 +92,12 @@ public class UserRepo {
 	}
 
 
+    public void updateLanguage(User user,String language) {
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		em.createQuery("UPDATE User u SET u.language =:language WHERE u.id =:id")
+				.setParameter("id", user.getId()).setParameter("language", language).executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+    }
 }

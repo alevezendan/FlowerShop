@@ -23,24 +23,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a969b459-c450-464b-a7a4-3ce53f66540f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FlowerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FlowerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MyLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MyLauncher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/Flower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Flower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/FlowerShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/FlowerShop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/FlowerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/FlowerRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/FlowerShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/FlowerShopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/FlowerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/FlowerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/LogInService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/LogInService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/start/ApplicationStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/start/ApplicationStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/employee.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/employee.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/EmployeeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/FlowerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/FlowerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/LogInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/LogInController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/MyLauncher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/MyLauncher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/entity/Flower.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Flower.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/entity/FlowerShop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/FlowerShop.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repository/UserRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repository/UserRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/FlowerShopService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/FlowerShopService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/repository/FlowerRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/repository/FlowerRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/FlowerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/FlowerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/LogInService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/LogInService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/start/ApplicationStart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/start/ApplicationStart.class" afterDir="false" />
     </list>
@@ -95,6 +105,15 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.4842932" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Ale\AN3\Sem2\PS\Proiect\FlowerShop\Proiect-IS\src\main\resources\META-INF" />
+      <recent name="C:\Ale\AN3\Sem2\PS\Proiect\FlowerShop\Proiect-IS\src\main\java\resources" />
+      <recent name="C:\Ale\AN3\Sem2\PS\Proiect\FlowerShop\Proiect-IS\src\main\resources" />
+      <recent name="C:\Ale\AN3\Sem2\PS\Proiect\FlowerShop\Proiect-IS\src\main\java\model" />
+      <recent name="C:\Ale\AN3\Sem2\PS\Proiect\FlowerShop\Proiect-IS\src\main\java\model\i18n" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.MyLauncher">
     <configuration name="ApplicationStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -188,14 +207,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" width="1089" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1620884304271" />
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1620901107717">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1621058206001">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1620901107717" />
-    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1620833290880">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1621058206001" />
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1621009347996">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1620833290880" />
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1621009347996" />
+    <state x="545" y="293" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1621010353304">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="545" y="293" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1621010353304" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1621010368487">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1621010368487" />
     <state x="444" y="167" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1620826544301">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -204,38 +231,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="418" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1620826491242" />
-    <state width="1493" height="150" key="GridCell.Tab.0.bottom" timestamp="1620902260649">
+    <state width="1493" height="235" key="GridCell.Tab.0.bottom" timestamp="1621062279129">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="150" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620902260649" />
-    <state width="1493" height="150" key="GridCell.Tab.0.center" timestamp="1620902260649">
+    <state width="1493" height="235" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621062279129" />
+    <state width="1493" height="235" key="GridCell.Tab.0.center" timestamp="1621062279129">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="150" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620902260649" />
-    <state width="1493" height="150" key="GridCell.Tab.0.left" timestamp="1620902260649">
+    <state width="1493" height="235" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1621062279129" />
+    <state width="1493" height="235" key="GridCell.Tab.0.left" timestamp="1621062279129">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="150" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620902260649" />
-    <state width="1493" height="150" key="GridCell.Tab.0.right" timestamp="1620902260649">
+    <state width="1493" height="235" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1621062279129" />
+    <state width="1493" height="235" key="GridCell.Tab.0.right" timestamp="1621062279129">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="150" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620902260649" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1620892348486">
+    <state width="1493" height="235" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1621062279129" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1621011480841">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620892348486" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1620892348486">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621011480841" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1621011480841">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1620892348486" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1620892348486">
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1621011480841" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1621011480841">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1620892348486" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1620892348486">
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1621011480841" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1621011480841">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1620892348486" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1621011480841" />
     <state x="299" y="67" key="Maven.ArtifactSearchDialog" timestamp="1620822081451">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -260,10 +287,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="305" y="148" width="925" height="628" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1620822490723" />
-    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1620889295447">
+    <state x="986" y="0" width="557" height="830" key="dock-window-1" timestamp="1621079108415">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1620889295447" />
+    <state x="986" y="0" width="557" height="830" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1621079108415" />
+    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1620972710254">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1620972710254" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -274,7 +305,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/AdminController.java</url>
-          <line>206</line>
+          <line>217</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

@@ -1,5 +1,6 @@
 package controller;
 
+import model.Language;
 import service.FlowerService;
 
 import entity.Flower;
@@ -14,6 +15,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import service.FlowerShopService;
+import service.UserService;
 //import lombok.Data;
 //import lombok.RequiredArgsConstructor;
 
@@ -29,11 +31,13 @@ public class EmployeeController extends Controller implements Initializable {
     private User u;
     private FlowerShop f;
     private Stage stage;
+    private Language language;
 
     private FlowerService flowS;
     private FlowerShopService flowsS;
     // private FlowerMapper flowerMapper;
     private FlowerController flowerController;
+    private UserService userService;
 
     @FXML
     private TextField newName;
@@ -74,6 +78,29 @@ public class EmployeeController extends Controller implements Initializable {
 
     @FXML
     private CheckBox json;
+    @FXML
+    private Button ViewF;
+
+    @FXML
+    private Button Filter;
+
+    @FXML
+    private Button Search;
+
+    @FXML
+    private Button ViewS;
+
+    @FXML
+    private Button Add;
+
+    @FXML
+    private Button Update;
+
+    @FXML
+    private Button Delete;
+
+    @FXML
+    private Button SaveR;
     //public void init(LogInController mainGUI){
     //this.loginGUI=mainGUI;
     // }
@@ -81,22 +108,47 @@ public class EmployeeController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        flowsS=new FlowerShopService();
-        u=flowerController.getUserService().getU(stage.getTitle());
-        f=u.getFlowerShop();
-        //f=flowsS.getFlowerShopById(u.getFlowerShopId());
-        dataF= FXCollections.observableArrayList();
-        flowerTable.getSelectionModel (). setCellSelectionEnabled (true);
-        //initCombo();
+        //userService=new UserService();
 
+        language=new Language();
+        flowerController=new FlowerController();
+        flowsS=new FlowerShopService();
+        //stage = (Stage) logOut.getScene().getWindow();
+        dataF= FXCollections.observableArrayList();
+        //f=u.getFlowerShop();
+        flowerTable.getSelectionModel (). setCellSelectionEnabled (true);
+       // u=flowerController.getUserService().getU(stage.getTitle());
+       // switchLanguage();
+        initCombo();
+        //init();
     }
 
     public void init(){
         stage = (Stage) logOut.getScene().getWindow();
-        // String ux=stage.getTitle();
+      //  System.out.println(stage.getTitle()+" stage title");
+        u=flowerController.getUserService().getU(stage.getTitle());
 
-        // u=userP.getU(stage.getTitle());
-        // f=flowsP.getFlowerShop(u.getId());
+       // System.out.println(u.getUsername()+" username");
+        f=u.getFlowerShop();
+        System.out.println(u.getLanguage()+"din init");
+       // switchLanguage(u.getLanguage());
+    }
+
+    @FXML
+    void refreshOnAction(ActionEvent event) {
+        init();
+        switchLanguage(u.getLanguage());
+    }
+    public void switchLanguage(String s){
+        switch(s){
+            case "French":language.changeToEmployeeFrench(ViewF,Search,Filter,ViewS,SaveR,Add,Update,Delete,logOut,comboFilter,comboStat,newName,newColor,newPrice,newAvail,newQuant);
+                break;
+            case "Turkish":language.changeToEmployeeTurkish(ViewF,Search,Filter,ViewS,SaveR,Add,Update,Delete,logOut,comboFilter,comboStat,newName,newColor,newPrice,newAvail,newQuant);
+                break;
+            case "Romanian":language.changeToEmployeeRo(ViewF,Search,Filter,ViewS,SaveR,Add,Update,Delete,logOut,comboFilter,comboStat,newName,newColor,newPrice,newAvail,newQuant);
+                break;
+
+        }
     }
     public void showErrorDialog(String error){
         Dialog<String> dialog = new Dialog<String>();
@@ -106,229 +158,119 @@ public class EmployeeController extends Controller implements Initializable {
         dialog.getDialogPane().getButtonTypes().add(type);
         dialog.showAndWait();
     }
-   /* @FXML
+
+    @FXML
+    void viewOnAction(ActionEvent event) {
+        init();
+        System.out.println(f.getName());
+        flowerController.getFlowerService().showFlowers(flowerTable,f,dataF);
+
+    }
+
+    @FXML
+    void searchOnAction(ActionEvent event) {
+        init();
+        String flowerName=searchName.getText();
+        flowerController.getFlowerService().searchFlowerByName(flowerTable,f,dataF,flowerName);
+        // flowP.searchFlower(flowerTable,flowerName,dataF,f);
+
+    }
+    @FXML
     void addOnAction(ActionEvent event) {
         init();
-        try {
-            List<FlowerShop> fS=null;
-            fS.add(f);
-            Flower flower=new Flower(Integer.parseInt(UUID.randomUUID().toString()),vEmployee.getNewName().getText(),vEmployee.getNewColor().getText(),Double.parseDouble(vEmployee.getNewQuant().getText()),Double.parseDouble(vEmployee.getNewPrice().getText()), vEmployee.getNewAvail().getText(),fS);
-            flowerController.getFlowerService().insertFlower(vEmployee.getFlowerTable(), f,flower, dataF);
-            // flowP.addFlower(flowerTable, f, newColor.getText(), newName.getText(), newPrice.getText(), newAvail.getText(), newQuant.getText(), dataF);
-        }catch(Exception e){
-            showErrorDialog("Missing data!");
-        }
-        clear();
 
-    }*/
-    /*
+       flowerController.getFlowerService().addFlower(f,flowerTable,dataF,newName,newColor,newPrice,newAvail,newQuant);
+
+    }
+
     public void clear(){
-        vEmployee.getNewName().clear();
-        vEmployee.getNewPrice().clear();
-        vEmployee.getNewColor().clear();
-        vEmployee.getNewAvail().clear();
-        vEmployee.getNewQuant().clear();
-    }*/
-   /* @FXML
+        newName.clear();
+        newPrice.clear();
+        newColor.clear();
+        newAvail.clear();
+        newQuant.clear();
+    }
+    @FXML
     void logOutOnAction(ActionEvent event) {
-        Stage stage = (Stage) vEmployee.getLogOut().getScene().getWindow();
+        Stage stage = (Stage) logOut.getScene().getWindow();
         stage.close();
     }
 
     @FXML
     void deleteOnAction(ActionEvent event) {
         init();
+        Flower flower = flowerTable.getSelectionModel().getSelectedItem();
         try {
-            Flower flower = vEmployee.getFlowerTable().getSelectionModel().getSelectedItem();
-            List<FlowerDTO> flowersDTO=flowerController.remaining(flower);
-            for(FlowerDTO f:flowersDTO){
-                Flower flow=FlowerMapper.dtoToEntity(f);
-                dataF.add(flow);
-            }
-            //  flowP.deleteFlower(flower, flowerTable);
+            flowerController.getFlowerService().deleteFlower(flower,flowerTable,dataF,f);
         }catch(Exception e){
-            showErrorDialog("Please select the item you want to delete!");
+            showErrorDialog("Please select the item that you want to delete!");
         }
-    }*/
 
-   /* @FXML
+    }
+
+    @FXML
     void filterOnAction(ActionEvent event) {
         init();
-        String s="";
-        try {
-            s = vEmployee.getComboFilter().getSelectionModel().getSelectedItem();
-        }catch(Exception e){
-            showErrorDialog("Please select the criterion!");
-        }
+        flowerController.getFlowerService().filterFlowers(filterText,comboFilter,flowerTable,f,dataF);
 
-        //User user=userP.getU(u);
-        // System.out.println(user.getUsername());
-        // FlowerShop f=flowsP.getFlowerShop(user.getId());
-        try {
-            // flowP.filterr(s, flowerTable, dataF, filterText.getText(), f);
-        }catch(Exception e){
-            showErrorDialog("Missing filter value!");
-        }
+    }
 
-    }*/
-
-   /* @FXML
+   @FXML
     void saveReportOnAction(ActionEvent event) {
         init();
-        FlowerShop f=flowsP.getFlowerShop("The Flower Studio");
-        if(vEmployee.getJson().isSelected()) {
-            //toJson();
-            //flowP.saveJSONReports(f);
-        }
-        if(vEmployee.getCsv().isSelected()){
-            //toCSV();
-            //flowP.saveCSVReports(f);
-        }
-    }*/
+        flowerController.getFlowerService().saveReports(f,json,csv);
 
-   /* @FXML
-    void searchOnAction(ActionEvent event) {
-        init();
-        String flowerName=vEmployee.getSearchName().getText();
-        // flowP.searchFlower(flowerTable,flowerName,dataF,f);
-
-    }*/
+    }
 
 
-   /* @FXML
+
+
+    @FXML
     void updateOnAction(ActionEvent event) {
         init();
-        try {
-            dataF = vEmployee.getFlowerTable().getItems();
-            if (!vEmployee.getNewName().getText().equals("")) {
+        dataF = flowerTable.getItems();
+        Flower flower = flowerTable.getSelectionModel().getSelectedItem();
+       flowerController.getFlowerService().updateFlower(flowerTable,flower,dataF,newName,newColor,newPrice,newAvail,newQuant);
 
-                //flowP.updateName(vEmployee.getFlowerTable().getSelectionModel().getSelectedItem(), dataF, newName.getText());
-            }
-            if (!vEmployee.getNewPrice().getText().equals("")) {
-
-                // flowP.updatePrice(vEmployee.getFlowerTable().getSelectionModel().getSelectedItem(), dataF, newPrice.getText());
-            }
-            if (!vEmployee.getNewColor().getText().equals("")) {
-
-                //flowP.updateColor(vEmployee.getFlowerTable().getSelectionModel().getSelectedItem(), dataF, newColor.getText());
-            }
-            if (!vEmployee.getNewAvail().getText().equals("")) {
-                // updateAvail();
-                //flowP.updateAvail(vEmployee.getFlowerTable().getSelectionModel().getSelectedItem(), dataF, newAvail.getText());
-            }
-            if (!vEmployee.getNewQuant().getText().equals("")) {
-                //updateQuant();
-                //flowP.updateQuant(vEmployee.getFlowerTable().getSelectionModel().getSelectedItem(), dataF, newQuant.getText());
-            }
-            vEmployee.getFlowerTable().getItems().clear();
-
-
-
-            vEmployee.getFlowerTable().setItems(dataF);
-            vEmployee.getNewName().clear();
-            vEmployee.getNewPrice().clear();
-            vEmployee.getNewColor().clear();
-            vEmployee.getNewAvail().clear();
-            vEmployee.getNewQuant().clear();
-        }
-        catch(Exception e){
-            showErrorDialog("Item not selected!");
-        }
-
-    }*/
-
-    /*@FXML
-    void viewOnAction(ActionEvent event) {
-        init();
-        System.out.println(u.getUsername());
-        List<FlowerDTO> allFlowers=flowerController.all();
-        for(FlowerDTO f:allFlowers){
-            Flower flow=FlowerMapper.dtoToEntity(f);
-            dataF.add(flow);
-        }
-        //FlowerShop f=flowsP.getFlowerShop(u.getId());
-
-        //flowP.view(vEmployee.getFlowerTable(),dataF,f);
-    }*/
-
-    /*@FXML
-    void viewStatisticsOnAction(ActionEvent event) {
-        try{
-            ObservableList<PieChart.Data> pieChartData =FXCollections.observableArrayList();
-
-            vEmployee.getPieChart().setVisible(true);
-            if (vEmployee.getComboStat().getValue().equals("Availability")) {
-                if(vEmployee.getPie().isSelected()) {
-                    // flowP.statAvail(f, pieChart, pieChartData);
-                }
-                else{
-                    showErrorDialog("Select chart!");
-                }
-            }
-            if (vEmployee.getComboStat().getValue().equals("Price")) {
-                if(vEmployee.getPie().isSelected()) {
-                    // flowP.statPrice(f, pieChart, pieChartData);
-                }else{
-                    showErrorDialog("Select chart!");
-                }
-            }
-            if (vEmployee.getComboStat().getValue().equals("Quantity")) {
-                if (vEmployee.getPie().isSelected()) {
-                    //flowP.statQuant(f, pieChart, pieChartData);
-                }else{
-                    showErrorDialog("Select chart!");
-                }
-            }
-            // }
-
-        }catch(Exception e){
-            showErrorDialog("Please select the criterion!");
-        }
     }
-*/
 
-   /* @FXML
+
+
+    @FXML
+    void viewStatisticsOnAction(ActionEvent event) {
+        init();
+        ObservableList<PieChart.Data> pieChartData =FXCollections.observableArrayList();
+        pieChart.setVisible(true);
+        flowerController.getFlowerService().viewStatistics(comboStat,f,pieChart,pieChartData,pie);
+    }
+
+
+    @FXML
     void comboFOnAction(ActionEvent event) {
     }
     @FXML
     void comboStatOnAction(ActionEvent event) {
     }
     public void initCombo(){
-        ObservableList<String> list1=FXCollections.observableArrayList();
+       ObservableList<String> list1=FXCollections.observableArrayList();
         list1.add("Name");
         list1.add("Price");
         list1.add("Color");
         list1.add("Availability");
         list1.add("Quantity");
-        vEmployee.getComboFilter().setItems(list1);
+       comboFilter.setItems(list1);
         ObservableList<String> list2=FXCollections.observableArrayList();
         list2.add("Price");
-        list2.add("Color");
+
         list2.add("Availability");
         list2.add("Quantity");
-        vEmployee.getComboStat().setItems(list2);
+        comboStat.setItems(list2);
 
-    }*/
+    }
 
-    // @FXML
-    //void pieOnAction(ActionEvent event) {
-       /* ObservableList<PieChart.Data> pieChartData =FXCollections.observableArrayList();
-       // FlowerShop f=flowsP.getFlowerShop("The Flower Studio");
-        if(pie.isSelected())
+     @FXML
+    void pieOnAction(ActionEvent event) {
 
-        {
-
-            pieChart.setVisible(true);
-            if (comboStat.getValue().equals("Availability")) {
-                flowP.statAvail(f, pieChart, pieChartData);
-            }
-            if (comboStat.getValue().equals("Price")) {
-                flowP.statPrice(f, pieChart, pieChartData);
-            }
-            if (comboStat.getValue().equals("Quantity")) {
-                flowP.statQuant(f, pieChart, pieChartData);
-            }
-        }*/
-    // }
+     }
 
 }
