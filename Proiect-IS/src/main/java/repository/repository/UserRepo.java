@@ -1,6 +1,6 @@
-package repository;
+package repository.repository;
 
-import entity.Flower;
+
 import entity.FlowerShop;
 import entity.User;
 

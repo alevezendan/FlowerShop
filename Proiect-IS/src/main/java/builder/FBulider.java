@@ -1,12 +1,20 @@
 package builder;
 
+
+
 import entity.Flower;
 import entity.FlowerShop;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FBulider implements  FlowerBuilder{
     private Flower flower;
+    private List<Flower> flowers;
+
     public FBulider(){
         this.flower=new Flower();
+        this.flowers=new ArrayList<Flower>();
     }
 
     @Override
@@ -48,4 +56,11 @@ public class FBulider implements  FlowerBuilder{
     public Flower getFlower() {
         return this.flower;
     }
+
+    @Override
+    public List<Flower> getFlowers() {
+        return null;
+    }
+
+
 }

@@ -1,10 +1,11 @@
 package service;
 
+//import report.Report;
+//import report.ReportFactory;
+
 import entity.Flower;
 import entity.FlowerShop;
-import entity.User;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
@@ -12,8 +13,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import repository.FlowerRepo;
+import repository.repository.FlowerRepo;
 
+
+import report.Report;
+import report.ReportFactory;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,8 +28,12 @@ import java.util.Random;
 public class FlowerService {
 
     private FlowerRepo flowerRepo;
+    private ReportFactory reportFactory;
+    private boolean CSV;
     public FlowerService(){
         this.flowerRepo=new FlowerRepo();
+        this.reportFactory=new ReportFactory();
+
     }
 
     public void showErrorDialog(String error){
@@ -193,7 +201,7 @@ public class FlowerService {
         pieChart.setData(pieChartData);
     }
 
-    public void statPrice(FlowerShop f,PieChart pieChart,  ObservableList<PieChart.Data> pieChartData){
+    public void statPrice(FlowerShop f, PieChart pieChart, ObservableList<PieChart.Data> pieChartData){
         for(Flower fl:f.getFlowers()){
 
             pieChartData.add(new PieChart.Data(fl.getName(),fl.getPrice()));
@@ -210,12 +218,22 @@ public class FlowerService {
     }
 
     public void saveReports(FlowerShop f, CheckBox json, CheckBox csv) {
-        if(json.isSelected()){
+        /*if(json.isSelected()){
             saveJSONReports(f);
+        }*/
+
+        if(csv.isSelected()) {
+            //saveCSVReports(f);
+
+            Report report=reportFactory.getReport("CSV");
+            report.generateReport(f);
+
         }
-        if(csv.isSelected()){
-            saveCSVReports(f);
+        if(json.isSelected()){
+            Report report=reportFactory.getReport("JSON");
+            report.generateReport(f);
         }
+
     }
 
     public void saveCSVReports(FlowerShop f){

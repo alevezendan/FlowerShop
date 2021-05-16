@@ -1,7 +1,8 @@
-package repository;
+package repository.repository;
+
+
 
 import entity.FlowerShop;
-import entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

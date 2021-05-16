@@ -3,6 +3,9 @@ package builder;
 import entity.Flower;
 import entity.FlowerShop;
 
+
+import java.util.List;
+
 public class FlowerConstruct {
     private FlowerBuilder flowerBuilder;
     public FlowerConstruct(FlowerBuilder flowerBuilder){
@@ -11,7 +14,7 @@ public class FlowerConstruct {
     public Flower getFlower(){
             return this.flowerBuilder.getFlower();
     }
-
+    public List<Flower> getFlowers(){return this.flowerBuilder.getFlowers();}
     public void constructFlower(int id, String name, String color, double price, String avail, double quant, FlowerShop fl)
     {
         this.flowerBuilder.buildId(id);

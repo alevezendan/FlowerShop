@@ -1,5 +1,6 @@
 package start;
 
+
 import entity.Flower;
 import entity.FlowerShop;
 import entity.User;
@@ -8,16 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import repository.FlowerRepo;
-import repository.FlowerShopRepo;
-import repository.UserRepo;
-import resources.PropertiesDemo;
+import repository.repository.FlowerRepo;
+import repository.repository.FlowerShopRepo;
+import repository.repository.UserRepo;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class ApplicationStart extends  Application {
 

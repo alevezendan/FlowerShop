@@ -1,7 +1,8 @@
-package repository;
+package repository.repository;
+
+
 
 import entity.Flower;
-import entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

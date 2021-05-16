@@ -1,9 +1,10 @@
 package model;
 
-import entity.User;
+
 //import lombok.Data;
 
-import java.util.ArrayList;
+import entity.User;
+
 import java.util.List;
 
 //@Data

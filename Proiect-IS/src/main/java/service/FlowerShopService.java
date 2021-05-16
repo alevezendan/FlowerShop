@@ -1,11 +1,13 @@
 package service;
 
+
+import entity.FlowerShop;
 import entity.User;
 import model.FlowerShopChain;
-import entity.FlowerShop;
+
 import model.Users;
-import repository.FlowerShopRepo;
-import repository.UserRepo;
+import repository.repository.FlowerShopRepo;
+import repository.repository.UserRepo;
 
 import java.util.List;
 

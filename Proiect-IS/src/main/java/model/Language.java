@@ -26,7 +26,7 @@ public class Language {
     }
 
     public void changeToLogInRo(TextField usern, TextField pass, Button login) {
-        locale=Locale.FRENCH;
+        locale=new Locale("ro","RO");
         resourceBundle= ResourceBundle.getBundle("MyBundle_ro", locale);
         //System.out.println(labels.getString("w1"));
         usern.setText(resourceBundle.getString("w3"));
@@ -35,7 +35,7 @@ public class Language {
     }
 
     public void changeToLogInTurkish(TextField usern, TextField pass, Button login) {
-        locale=Locale.FRENCH;
+        locale=new Locale("tr","TR");
         resourceBundle= ResourceBundle.getBundle("MyBundle_tr", locale);
         //System.out.println(labels.getString("w1"));
         usern.setText(resourceBundle.getString("w3"));
