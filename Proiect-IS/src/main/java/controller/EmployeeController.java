@@ -1,11 +1,11 @@
 package controller;
 
 import model.Language;
-import service.FlowerService;
+import model.service.FlowerService;
 
-import entity.Flower;
-import entity.FlowerShop;
-import entity.User;
+import model.entity.Flower;
+import model.entity.FlowerShop;
+import model.entity.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,15 +14,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import service.FlowerShopService;
-import service.UserService;
+import model.service.FlowerShopService;
+import model.service.UserService;
 //import lombok.Data;
 //import lombok.RequiredArgsConstructor;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.UUID;
 
 
 public class EmployeeController extends Controller implements Initializable {

@@ -41,7 +41,7 @@
                         <Button fx:id="Add" layoutX="70.0" layoutY="350.0" mnemonicParsing="false" onAction="#addOnAction" text="Create" />
                         <Button fx:id="Update" layoutX="231.0" layoutY="350.0" mnemonicParsing="false" onAction="#updateOnAction" text="Update" />
                         <Button fx:id="Delete" layoutX="419.0" layoutY="350.0" mnemonicParsing="false" onAction="#deleteOnAction" text="Delete" />
-                        <Button fx:id="SaveR" layoutX="684.0" layoutY="359.0" mnemonicParsing="false" onAction="#saveReportOnAction" text="Save report" />
+                        <Button fx:id="SaveR" layoutX="684.0" layoutY="359.0" mnemonicParsing="false" onAction="#saveReportOnAction" text="Save model.report" />
                         <Separator layoutX="567.0" layoutY="132.0" prefHeight="11.0" prefWidth="331.0" />
                         <Label alignment="CENTER" layoutX="470.0" layoutY="21.0" prefHeight="111.0" prefWidth="504.0" text="Rose and CO">
                             <font>

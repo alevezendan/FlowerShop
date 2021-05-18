@@ -1,8 +1,8 @@
 package controller;
 
-import entity.User;
+import model.entity.User;
 import model.Language;
-import service.LogInService;
+import model.service.LogInService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import service.UserService;
+import model.service.UserService;
 //import lombok.Data;
 //import lombok.RequiredArgsConstructor;
 

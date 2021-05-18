@@ -3,7 +3,7 @@ package model;
 
 
 
-import entity.FlowerShop;
+import model.entity.FlowerShop;
 
 import java.util.List;
 

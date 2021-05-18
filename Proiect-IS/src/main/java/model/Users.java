@@ -3,7 +3,7 @@ package model;
 
 //import lombok.Data;
 
-import entity.User;
+import model.entity.User;
 
 import java.util.List;
 

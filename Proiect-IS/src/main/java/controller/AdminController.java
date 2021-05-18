@@ -1,13 +1,13 @@
 package controller;
 
 import model.Language;
-import service.FlowerService;
-import service.FlowerShopService;
-import service.UserService;
+import model.service.FlowerService;
+import model.service.FlowerShopService;
+import model.service.UserService;
 
-import entity.Flower;
-import entity.FlowerShop;
-import entity.User;
+import model.entity.Flower;
+import model.entity.FlowerShop;
+import model.entity.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
